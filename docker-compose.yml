@@ -6,3 +6,5 @@ services:
     restart: on-failure:3
     environment:
       - GOO_API_KEY=YOUR_API_KEY_IS_HERE
+    ports:
+      - "0.0.0.0:3000:3000"
