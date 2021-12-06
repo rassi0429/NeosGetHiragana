@@ -26,7 +26,7 @@ app.get("/G59",async(req,res) => {
 
     try {
         const { data } = await axios.post(goo_api,getBody(req.query.text))
-        res.send(getG59Index(data.converted.replace(" ",""))+"!")
+        res.send(getG59Index(data.converted.replace(" ",""))+",")
     } catch {
         res.status(500).send("BAD_RESPONCE")
     }
