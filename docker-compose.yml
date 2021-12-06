@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  node:
+    build: .
+    init: true
+    restart: on-failure:3
+    environment:
+      - GOO_API_KEY=YOUR_API_KEY_IS_HERE
