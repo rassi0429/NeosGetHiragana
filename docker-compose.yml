@@ -7,4 +7,4 @@ services:
     environment:
       - GOO_API_KEY=YOUR_API_KEY_IS_HERE
     ports:
-      - "0.0.0.0:3000:3000"
+      - "127.0.0.1:3000:3000"
