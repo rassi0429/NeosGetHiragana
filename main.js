@@ -1,6 +1,7 @@
 const axios = require("axios")
 const express = require("express")
 const app = express()
+const romajiConv = require('@koozaki/romaji-conv');
 
 const goo_api = "https://labs.goo.ne.jp/api/hiragana"
 
@@ -18,6 +19,20 @@ app.get("/",async (req,res) => {
     }
 })
 
+app.get("/romaji",async (req,res) => {
+  if(!req.query.text) {
+      res.status(400).send("BAD_REQUEST")
+      return
+  }
+
+  try {
+    const romaji = romajiConv(req.query.text);
+    res.send(romaji.toHiragana())
+  } catch {
+      res.status(500).send("BAD_RESPONCE")
+  }
+})
+
 app.get("/G59",async(req,res) => {
     if(!req.query.text) {
         res.status(400).send("BAD_REQUEST")
@@ -32,7 +47,7 @@ app.get("/G59",async(req,res) => {
     }
 })
 
-const api = app.listen(3000, () => {
+const api = app.listen(3001, () => {
     if(!process.env.GOO_API_KEY) {
         throw new Error("APIKEY NOT PROVIDED")
     }
