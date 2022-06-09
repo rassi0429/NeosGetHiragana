@@ -47,7 +47,7 @@ app.get("/G59",async(req,res) => {
     }
 })
 
-const api = app.listen(3001, () => {
+const api = app.listen(3000, () => {
     if(!process.env.GOO_API_KEY) {
         throw new Error("APIKEY NOT PROVIDED")
     }
